@@ -1,0 +1,19 @@
+version: "3.7"
+services: 
+  retry-api:
+    container_name: retry-api
+    build: 
+      context: ./
+      dockerfile: ApiRetry/Dockerfile
+    ports:
+      - "5274:5274"
+    depends_on:
+      - third-party-api
+      
+  third-party-api:
+    container_name: third-party-api
+    build: 
+      context: ./
+      dockerfile: ThirdPartyApi/Dockerfile
+    ports:
+      - "5153:5153"
